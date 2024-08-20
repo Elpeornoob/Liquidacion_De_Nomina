@@ -84,6 +84,7 @@ public abstract class AbstractList<E> extends AbstractCollection<E> implements L
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public E[] peekLastArray(int n) {
 		if (isEmpty() || n <= 0) {
@@ -91,7 +92,6 @@ public abstract class AbstractList<E> extends AbstractCollection<E> implements L
 		}
 		
 		// Crear un array del tamaño necesario.
-		@SuppressWarnings("unchecked")
 		E[] elements = (E[]) new Object[size()];
 		
 		// Llenar el array usando el método toArray.
@@ -102,7 +102,6 @@ public abstract class AbstractList<E> extends AbstractCollection<E> implements L
 			return elements;
 		} else {
 			// Crear un nuevo array para los últimos n elementos.
-			@SuppressWarnings("unchecked")
 			E[] peekElementos = (E[]) new Object[n];
 			
 			// Copiar los últimos n elementos del array original al nuevo array.
@@ -358,6 +357,7 @@ public abstract class AbstractList<E> extends AbstractCollection<E> implements L
 		return !elementsToRemove.isEmpty() && contained;
 	}
 
+	@SuppressWarnings("hiding")
 	public <E> E[] toArray(E[] array) {
 		// Si el array proporcionado es más grande que el tamaño de la lista,
 		// se usa el array proporcionado, de lo contrario, se crea uno nuevo.
