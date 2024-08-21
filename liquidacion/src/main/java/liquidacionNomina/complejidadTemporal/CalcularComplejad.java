@@ -11,6 +11,7 @@ public class CalcularComplejad {
         System.out.println("Complejidad Calcular Descuento Fondo Empleados: " + "\n" + complejidadCalcularDescuentoFondoEmpleados());
         System.out.println("Complejidad Calcular Mostrar reporte: " + "\n" + complejidadMostrarReporte());
     }
+
     public static String complejidadCalcularSalarioNeto(){
         int[] sizes = {10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000};
 
@@ -29,17 +30,18 @@ public class CalcularComplejad {
             }
 
             // Medir el tiempo de ejecución para el cálculo del salario neto
-            long startTime = System.currentTimeMillis();
+            long startTime = System.nanoTime();
             Iterator<Empleado> it = empleados.iterator();
             while (it.hasNext()) {
                 Empleado empleado = it.next();
                 liquidacionEmpleado.calcularSalarioNeto(empleado);
             }
-            long endTime = System.currentTimeMillis();
+            long endTime = System.nanoTime();
+            
             long duration = endTime - startTime;
-            result.append("Tiempo de ejecución para ").append(size).append(" empleados: ").append(duration).append(" milisegundos\n");
+            result.append("Tiempo de ejecución para ").append(size).append(" empleados: ").append(duration).append(" nanosegundos\n");
         }
-    
+        
         return result.toString();
     }
 
@@ -47,7 +49,7 @@ public class CalcularComplejad {
         int[] sizes = {10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000};
     
         StringBuilder result = new StringBuilder(); // Usar StringBuilder para eficiencia en concatenación
-    
+        
         for (int size : sizes) {
             LinkedList<Empleado> empleados = new LinkedList<>();
             
@@ -59,9 +61,9 @@ public class CalcularComplejad {
                 boolean suscritoFondo = Math.random() > 0.5; // 50% de probabilidad de estar suscrito al fondo
                 empleados.add(new Empleado(String.format("%05d", i + 1), nombre, salario, suscritoFondo));
             }
-    
+
             // Medir el tiempo de ejecución para calcular el descuento del fondo de empleados
-            long startTime = System.currentTimeMillis();
+            long startTime = System.nanoTime();
             Iterator<Empleado> it = empleados.iterator();
             while (it.hasNext()) {
                 Empleado empleado = it.next();
@@ -69,10 +71,10 @@ public class CalcularComplejad {
                     liquidacionEmpleado.calcularSalarioConDescuentoFE(empleado.getSalario());
                 }
             }
-            long endTime = System.currentTimeMillis();
+            long endTime = System.nanoTime();
             
             long duration = endTime - startTime;
-            result.append("Tiempo de ejecución para ").append(size).append(" empleados: ").append(duration).append(" milisegundos\n");
+            result.append("Tiempo de ejecución para ").append(size).append(" empleados: ").append(duration).append(" nanosegundos\n");
         }
         
         return result.toString();
