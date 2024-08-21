@@ -7,7 +7,9 @@ import liquidacionNomina.liquidacion.liquidacionEmpleado;
 
 public class CalcularComplejad {
     public static void main(String[] args) {
-        System.out.println(complejidadMostrarReporte());
+        System.out.println("Complejidad Calcular Salario Neto: " + "\n" + complejidadCalcularSalarioNeto());
+        System.out.println("Complejidad Calcular Descuento Fondo Empleados: " + "\n" + complejidadCalcularDescuentoFondoEmpleados());
+        System.out.println("Complejidad Calcular Mostrar reporte: " + "\n" + complejidadMostrarReporte());
     }
     public static String complejidadCalcularSalarioNeto(){
         int[] sizes = {10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000};
