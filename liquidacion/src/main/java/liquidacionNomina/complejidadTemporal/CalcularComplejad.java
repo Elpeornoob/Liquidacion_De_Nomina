@@ -12,17 +12,16 @@ public class CalcularComplejad {
         System.out.println("Complejidad Calcular Mostrar reporte: " + "\n" + complejidadMostrarReporte());
     }
 
-    public static String complejidadCalcularSalarioNeto(){
+    // Método para medir la complejidad de calcular el salario neto
+    public static String complejidadCalcularSalarioNeto() {
         int[] sizes = {10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000};
-
         StringBuilder result = new StringBuilder(); // Usar StringBuilder para eficiencia en concatenación
 
         for (int size : sizes) {
             LinkedList<Empleado> empleados = new LinkedList<>();
-            
+
             // Agregar empleados con nombres únicos y salarios aleatorios
             for (int i = 0; i < size; i++) {
-                // Crear empleados con nombres y salarios aleatorios
                 String nombre = "Empleado" + i;
                 double salario = (Math.random() * 10_000_000) + 1_000_000; // Salarios entre 1,000,000 y 11,000,000
                 boolean suscritoFondo = Math.random() > 0.5; // 50% de probabilidad de estar suscrito al fondo
@@ -37,25 +36,24 @@ public class CalcularComplejad {
                 liquidacionEmpleado.calcularSalarioNeto(empleado);
             }
             long endTime = System.nanoTime();
-            
+
             long duration = endTime - startTime;
             result.append("Tiempo de ejecución para ").append(size).append(" empleados: ").append(duration).append(" nanosegundos\n");
         }
-        
+
         return result.toString();
     }
 
+    // Método para medir la complejidad de calcular el descuento del fondo de empleados
     public static String complejidadCalcularDescuentoFondoEmpleados() {
         int[] sizes = {10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000};
-    
         StringBuilder result = new StringBuilder(); // Usar StringBuilder para eficiencia en concatenación
-        
+
         for (int size : sizes) {
             LinkedList<Empleado> empleados = new LinkedList<>();
-            
+
             // Agregar empleados con nombres únicos y salarios aleatorios
             for (int i = 0; i < size; i++) {
-                // Crear empleados con nombres y salarios aleatorios
                 String nombre = "Empleado" + i;
                 double salario = (Math.random() * 10_000_000) + 1_000_000; // Salarios entre 1,000,000 y 11,000,000
                 boolean suscritoFondo = Math.random() > 0.5; // 50% de probabilidad de estar suscrito al fondo
@@ -72,41 +70,39 @@ public class CalcularComplejad {
                 }
             }
             long endTime = System.nanoTime();
-            
+
             long duration = endTime - startTime;
             result.append("Tiempo de ejecución para ").append(size).append(" empleados: ").append(duration).append(" nanosegundos\n");
         }
-        
+
         return result.toString();
     }
 
+    // Método para medir la complejidad de generar y mostrar el reporte de nómina
     public static String complejidadMostrarReporte() {
         int[] sizes = {10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000};
-    
         StringBuilder result = new StringBuilder(); // Usar StringBuilder para eficiencia en concatenación
-    
+
         for (int size : sizes) {
             LinkedList<Empleado> empleados = new LinkedList<>();
-            
+
             // Agregar empleados con nombres únicos y salarios aleatorios
             for (int i = 0; i < size; i++) {
-                // Crear empleados con nombres y salarios aleatorios
                 String nombre = "Empleado" + i;
                 double salario = (Math.random() * 10_000_000) + 1_000_000; // Salarios entre 1,000,000 y 11,000,000
                 boolean suscritoFondo = Math.random() > 0.5; // 50% de probabilidad de estar suscrito al fondo
                 empleados.add(new Empleado(String.format("%05d", i + 1), nombre, salario, suscritoFondo));
             }
-    
+
             // Medir el tiempo de ejecución para generar y mostrar el reporte
             long startTime = System.currentTimeMillis();
             liquidacionEmpleado.mostrarReporte(empleados);
             long endTime = System.currentTimeMillis();
-            
+
             long duration = endTime - startTime;
             result.append("Tiempo de ejecución para ").append(size).append(" empleados: ").append(duration).append(" milisegundos\n");
         }
-        
+
         return result.toString();
     }
-    
 }
