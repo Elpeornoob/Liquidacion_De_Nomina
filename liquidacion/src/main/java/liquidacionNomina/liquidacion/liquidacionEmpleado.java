@@ -18,7 +18,7 @@ public class liquidacionEmpleado {
     public static double calcularSalarioNeto(Empleado empleado){
         double salario_neto = empleado.getSalario();
         if(empleado.isSuscrito_a_fondo_empleados()){
-            salario_neto = salario_neto - (salario_neto * DESCUENTO_FONDO_EMPLEADOS);
+            calcularSalarioConDescuentoFE(salario_neto);
         }
         salario_neto = salario_neto - (salario_neto * PORCENTAJE_SALUD);
         salario_neto = salario_neto - (salario_neto * PORCENTAJE_PENSION);
@@ -28,7 +28,11 @@ public class liquidacionEmpleado {
         return salario_neto;
     }
 
-    public static void mostrarReporte(LinkedList<Empleado> empleados){
+    public static double calcularSalarioConDescuentoFE(double salario){
+        return salario = salario - (salario * DESCUENTO_FONDO_EMPLEADOS);
+    } 
+
+    public static String mostrarReporte(LinkedList<Empleado> empleados){
         StringBuilder reporte = new StringBuilder();
         reporte.append("Reporte de Liquidación de Nómina:\n");
         reporte.append("=================================\n");
@@ -61,6 +65,11 @@ public class liquidacionEmpleado {
             reporte.append("---------------------------------\n");
         }
 
+        return reporte.toString();
+    }
+
+    public static void mostrarListaReportes(LinkedList<Empleado> empleados){
+        String reporte = mostrarReporte(empleados);
         JTextArea textArea = new JTextArea(reporte.toString());
         textArea.setColumns(40);
         textArea.setRows(20);

@@ -71,7 +71,7 @@ public class Gestion {
         btnMostrarReporte.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                liquidacionEmpleado.mostrarReporte(empleados);
+                liquidacionEmpleado.mostrarListaReportes(empleados);
             }
         });
 
